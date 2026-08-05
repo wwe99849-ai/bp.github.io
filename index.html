@@ -18,6 +18,29 @@
 body{
     background:#f5f5f5;
     color:#333;
+    overflow-x: hidden;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
 }
 
 .container{
@@ -27,11 +50,21 @@ body{
     border-radius:25px;
     padding:40px;
     box-shadow:0 15px 40px rgba(0,0,0,.15);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.center-img{
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: auto;
+    animation: float 4s ease-in-out infinite;
 }
 
 header{
     text-align:center;
     margin-bottom:35px;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 header h1{
@@ -57,11 +90,14 @@ header h2{
     padding:20px;
     box-shadow:0 5px 15px rgba(0,0,0,.08);
     margin-bottom:20px;
-    transition:.3s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(29, 53, 87, 0.15);
+    background: #ffffff;
 }
 
 .card h3{
@@ -71,12 +107,19 @@ header h2{
 
 .center{
     text-align:center;
+    animation: fadeInUp 1.4s ease-out forwards;
 }
 
 .center img{
     width:100%;
     border-radius:20px;
     border:6px solid #d4af37;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.center img:hover {
+    transform: scale(1.03);
 }
 
 .center h2{
@@ -90,6 +133,12 @@ header h2{
     border-left:8px solid #1d3557;
     border-radius:15px;
     padding:25px;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1.6s ease-out forwards;
+}
+
+.summary:hover {
+    transform: translateX(5px);
 }
 
 .summary h2{
@@ -99,11 +148,14 @@ header h2{
 
 .students{
     margin-top:40px;
+    animation: fadeInUp 1.8s ease-out forwards;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 th{
@@ -115,10 +167,19 @@ th{
 td{
     padding:15px;
     border-bottom:1px solid #ddd;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-tr:hover{
-    background:#f2f8ff;
+tr{
+    transition: transform 0.2s ease;
+}
+
+tr:hover td{
+    background:#eef5ff;
+}
+
+tr:hover {
+    transform: scale(1.01);
 }
 
 footer{
@@ -128,15 +189,15 @@ footer{
 }
 
 @media(max-width:1000px){
-.main{
-grid-template-columns:1fr;
-}
-header h1{
-font-size:40px;
-}
-header h2{
-font-size:24px;
-}
+    .main{
+        grid-template-columns:1fr;
+    }
+    header h1{
+        font-size:40px;
+    }
+    header h2{
+        font-size:24px;
+    }
 }
 </style>
 </head>
@@ -144,16 +205,8 @@ font-size:24px;
 <body>
 
 <div class="container">
-<img src="https://cdn.phototourl.com/free/2026-08-05-a139dc7b-abf3-4021-9e7f-9f71587a5a93.png" class="center-img">
+<img src="https://cdn.phototourl.com/free/2026-08-05-a139dc7b-abf3-4021-9e7f-9f71587a5a93.png" class="center-img" alt="logo">
 
-<style>
-.center-img{
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-    height: auto;
-}
-</style>
 <header>
 <h1>ประวัติดนตรีไทย</h1>
 <h2>สมัยรัชกาลที่ ๒</h2>
@@ -164,43 +217,30 @@ font-size:24px;
 <div>
 
 <div class="card">
-
 <h3>พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย</h3>
 <p>
-พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย
-พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย (รัชกาลที่ ๒) ทรงครองราชย์ระหว่าง พ.ศ. ๒๓๕๒–๒๓๖๗ พระองค์ทรงเป็นกษัตริย์ที่มีพระปรีชาสามารถด้านศิลปวัฒนธรรม โดยเฉพาะวรรณกรรม นาฏศิลป์ และดนตรีไทย จึงทำให้ศิลปวัฒนธรรมไทยเจริญรุ่งเรืองอย่างมากในรัชสมัยของพระองค์<br>
+พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย (รัชกาลที่ ๒) ทรงครองราชย์ระหว่าง พ.ศ. ๒๓๕๒–๒๓๖๗ พระองค์ทรงเป็นกษัตริย์ที่มีพระปรีชาสามารถด้านศิลปวัฒนธรรม โดยเฉพาะวรรณกรรม นาฏศิลป์ และดนตรีไทย จึงทำให้ศิลปวัฒนธรรมไทยเจริญรุ่งเรืองอย่างมากในรัชสมัยของพระองค์<br><br>
 <b>ยุคทองของดนตรีไทย</b><br>
 สมัยรัชกาลที่ ๒ ได้รับการยกย่องว่าเป็น "ยุคทองของดนตรีไทย" เนื่องจากพระองค์ทรงส่งเสริมการประพันธ์เพลง การบรรเลงดนตรี และการฝึกฝนนักดนตรีในราชสำนัก ทำให้เกิดการพัฒนาทั้งบทเพลง เครื่องดนตรี และรูปแบบการแสดงจนเป็นรากฐานสำคัญของดนตรีไทยในปัจจุบัน
-<b>""</b>
 </p>
 </div>
 
 <div class="card">
 <h3>พระปรีชาสามารถด้านดนตรี</h3>
 <p>
-•ทรงเชี่ยวชาญการบรรเลง ซอสามสาย<br>
-
-•มีซอคู่พระหัตถ์ชื่อ "ซอสายฟ้าฟาด"<br>
-
-•ทรงเป็นผู้สนับสนุนให้นักดนตรีไทยสร้างสรรค์บทเพลงใหม่ ๆ<br>
-
-•ทรงส่งเสริมการอนุรักษ์ศิลปะดนตรีไทยให้แพร่หลาย<br>
-
-
-<b></b>
-
+• ทรงเชี่ยวชาญการบรรเลง ซอสามสาย<br>
+• มีซอคู่พระหัตถ์ชื่อ "ซอสายฟ้าฟาด"<br>
+• ทรงเป็นผู้สนับสนุนให้นักดนตรีไทยสร้างสรรค์บทเพลงใหม่ ๆ<br>
+• ทรงส่งเสริมการอนุรักษ์ศิลปะดนตรีไทยให้แพร่หลาย
 </p>
 </div>
 
 </div>
 
 <div class="center">
-
 <img src="https://cdn.phototourl.com/free/2026-08-05-dac87ae3-b2d2-447d-afaa-27a0ca1af00d.jpg" alt="รัชกาลที่2">
-
 <h2>พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย</h2>
 <h3>รัชกาลที่ ๒</h3>
-
 </div>
 
 <div>
@@ -238,42 +278,36 @@ font-size:24px;
 </div>
 
 <div class="students">
-
 <table>
-
 <tr>
 <th>ชื่อ</th>
 <th>ห้อง</th>
 <th>เลขที่</th>
 </tr>
-
 <tr>
 <td>ด.ช.ทิชากร ศรีรักษ์</td>
 <td>SMP3-1</td>
 <td>14</td>
 </tr>
-
 <tr>
 <td>ด.ช.โพนชัย แผนสันเทียะ</td>
 <td>SMP3-1</td>
 <td>15</td>
 </tr>
-
 <tr>
 <td>ด.ช.กฤษฎา ฤาชา</td>
 <td>SMP3-1</td>
 <td>31</td>
 </tr>
-
 </table>
-
 </div>
 
 <footer>
-@จัดทำโดยเด็กชายทิชากร ศรีรักษ์
+จัดทำโดยเด็กชายทิชากร ศรีรักษ์
 </footer>
 
 </div>
 
 </body>
 </html>
+
